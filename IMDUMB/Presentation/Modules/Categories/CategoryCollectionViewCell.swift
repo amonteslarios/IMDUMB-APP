@@ -39,8 +39,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         self.delegate = delegate
         tableView.reloadData()
         let totalHeight = CGFloat(movies.count) * MovieTableViewCell.rowHeight
-          tableHeightConstraint.constant = totalHeight
-        
+          tableHeightConstraint.constant = totalHeight        
         layoutIfNeeded()
     }
 }

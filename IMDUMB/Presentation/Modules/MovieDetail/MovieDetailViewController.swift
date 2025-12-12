@@ -47,24 +47,58 @@ final class MovieDetailViewController: BaseViewController, MovieDetailView {
         setupUI()
         presenter.onViewDidLoad()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imagesCollectionView.collectionViewLayout.invalidateLayout()
+        actorsCollectionView.collectionViewLayout.invalidateLayout()
+    }
 
     // MARK: - Setup UI
-
     private func setupUI() {
         // Collection de imágenes (carrusel)
+        if let layout = imagesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+            layout.sectionInset = .zero
+        } else {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+            layout.sectionInset = .zero
+            imagesCollectionView.collectionViewLayout = layout
+        }
+
         imagesCollectionView.dataSource = self
         imagesCollectionView.delegate = self
         imagesCollectionView.isPagingEnabled = true
         imagesCollectionView.showsHorizontalScrollIndicator = false
+        imagesCollectionView.alwaysBounceHorizontal = true
 
         imagesCollectionView.register(
             UINib(nibName: "MovieImageCarouselCell", bundle: nil),
             forCellWithReuseIdentifier: "MovieImageCarouselCell"
         )
+        
+        if let actorsLayout = actorsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            actorsLayout.scrollDirection = .horizontal
+            actorsLayout.minimumLineSpacing = 8
+            actorsLayout.minimumInteritemSpacing = 8
+            actorsLayout.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        } else {
+            let actorsLayout = UICollectionViewFlowLayout()
+            actorsLayout.scrollDirection = .horizontal
+            actorsLayout.minimumLineSpacing = 8
+            actorsLayout.minimumInteritemSpacing = 8
+            actorsLayout.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+            actorsCollectionView.collectionViewLayout = actorsLayout
+        }
 
-        // Collection de actores
         actorsCollectionView.dataSource = self
         actorsCollectionView.delegate = self
+        actorsCollectionView.showsHorizontalScrollIndicator = false
 
         actorsCollectionView.register(
             UINib(nibName: "ActorCollectionViewCell", bundle: nil),
@@ -75,7 +109,7 @@ final class MovieDetailViewController: BaseViewController, MovieDetailView {
     // MARK: - MovieDetailView
 
     func showLoading(_ isLoading: Bool) {
-        // si quieres, aquí podrías mostrar un loader aparte
+        // Mostrar loader
     }
 
     func showMovie(_ movie: Movie) {
@@ -169,7 +203,7 @@ extension MovieDetailViewController: UICollectionViewDataSource, UICollectionVie
             return CGSize(width: collectionView.bounds.width,
                           height: collectionView.bounds.height)
         } else {
-            return CGSize(width: 120, height: 40)
+            return CGSize(width: 120, height: 100)
         }
     }
 

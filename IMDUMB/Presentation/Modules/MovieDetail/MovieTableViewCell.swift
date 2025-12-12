@@ -9,7 +9,7 @@ import UIKit
 
 final class MovieTableViewCell: UITableViewCell {
 
-    static let rowHeight: CGFloat = 120
+    static let rowHeight: CGFloat = 60
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterImage: UIImageView!
@@ -17,13 +17,13 @@ final class MovieTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterImage.contentMode = .scaleAspectFill
-        posterImage.clipsToBounds = true
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         posterImage.image = nil
+        posterImage.contentMode = .scaleAspectFill
+        posterImage.clipsToBounds = true
     }
 
     func configure(with movie: Movie) {

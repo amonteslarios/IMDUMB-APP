@@ -57,6 +57,7 @@ final class CategoriesViewController: BaseViewController, CategoriesView {
     func showCategories(_ categories: [MovieCategory]) {
         self.categories = categories
         collectionView.reloadData()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 
     func showError(_ message: String) {
@@ -95,20 +96,29 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-  
-        let width = collectionView.bounds.width - 32
 
         let category = categories[indexPath.item]
-        let moviesCount = category.movies.count
 
-        let headerHeight: CGFloat = 40    // título + padding
-        let verticalPadding: CGFloat = 16 // espacio extra superior/inferior
+        let width = collectionView.bounds.width
 
-        let tableHeight = CGFloat(moviesCount) * MovieTableViewCell.rowHeight
+        let titleHeight: CGFloat = 28          // alto aprox del titleLabel
+        let verticalPadding: CGFloat = 16      // márgenes/espaciado de la celda
+        let tableHeight = CGFloat(category.movies.count) * MovieTableViewCell.rowHeight
 
-        let totalHeight = headerHeight + tableHeight + verticalPadding
+        let height = titleHeight + verticalPadding + tableHeight
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        .init(top: 12, left: 0, bottom: 12, right: 0)
+    }
 
-        return CGSize(width: width, height: totalHeight)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20
     }
 }
 

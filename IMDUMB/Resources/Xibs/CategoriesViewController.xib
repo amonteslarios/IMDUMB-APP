@@ -34,8 +34,8 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nmX-iG-4My" secondAttribute="trailing" id="Ci2-ct-Rfa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nmX-iG-4My" secondAttribute="bottom" id="ITc-25-wqr"/>
-                <constraint firstItem="nmX-iG-4My" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cgE-Tu-9W2"/>
                 <constraint firstItem="nmX-iG-4My" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="f9t-Re-ex0"/>
+                <constraint firstItem="nmX-iG-4My" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rVy-I3-2lX"/>
             </constraints>
             <point key="canvasLocation" x="35" y="21"/>
         </view>

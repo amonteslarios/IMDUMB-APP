@@ -24,10 +24,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Wo-3B-JkF">
-                    <rect key="frame" x="16" y="89" width="361" height="140"/>
+                    <rect key="frame" x="16" y="89" width="361" height="60"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="140" id="q2O-In-Dsb"/>
+                        <constraint firstAttribute="height" constant="60" id="q2O-In-Dsb"/>
                     </constraints>
                 </tableView>
             </subviews>

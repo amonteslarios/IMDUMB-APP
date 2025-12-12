@@ -22,7 +22,7 @@ enum MovieDetailRouter {
     }
 
     static func presentRecommend(from view: UIViewController, movie: Movie) {
-        let vc = RecommendModalViewController(nibName: "RecommendModalViewController", bundle: nil)
+        let vc = RecommendModalViewController()
         let presenter = RecommendModalPresenter(view: vc, movie: movie)
         vc.presenter = presenter
         vc.modalPresentationStyle = .pageSheet
